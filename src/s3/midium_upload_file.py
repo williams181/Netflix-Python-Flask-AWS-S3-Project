@@ -1,11 +1,11 @@
 import boto3
 from botocore.exceptions import NoCredentialsError
 
-ACCESS_KEY = 'ASIA5NBMOBZQS6BE73WD'
+ACCESS_KEY = 'ASIA4CEA772BGEL2RDA4'
 SECRET_KEY = 'cj7SksK9ShjjeQsGpGyv/3L0KyrAUFyHHdzgns08'
 
 
-local_file = 'C:\\Users\\william\\Desktop\\projetoifpe\\aws-josino-video\\data\\video\\jaspion.mp4'
+local_file = 'src\s3\jaspion.mp4'
 
 def upload_to_aws(local_file, bucket, s3_file):
     s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY,
@@ -23,4 +23,4 @@ def upload_to_aws(local_file, bucket, s3_file):
         return False
 
 
-uploaded = upload_to_aws(local_file, 'netflix-clone-josino', 'jaspion.mp4')
+uploaded = upload_to_aws(local_file, 'netflix-clone-josino-2', 'jaspion_s3.mp4')

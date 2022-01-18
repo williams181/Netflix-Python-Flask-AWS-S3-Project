@@ -2,7 +2,7 @@ import json
 import base64
 import boto3
 
-BUCKET_NAME = 'netflix-clone-josino'
+BUCKET_NAME = 'netflix-clone-josino-2'
 
 def lambda_handler(event):
     file_content = base64.b64decode(event['content'])
