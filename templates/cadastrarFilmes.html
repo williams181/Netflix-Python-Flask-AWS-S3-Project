@@ -36,16 +36,10 @@
                     <a class="fas fa-info-circle" href="{{ url_for('cadastrar') }}">CADASTRAR AORA</a>
                 </button>
                   <br><br>
-                  <form method="post" action="">
-                    <label>Titulo</label>
-                    <input type="text" name="titulo" id="titulo" placeholder="Nome do filme..."><br><br>
-                    <label>Sinopse</label>
-                    <input type="text" name="sinopse" id="sinopse" placeholder="Sinopse do filme..."><br><br>
-                    <label>Capa</label>
-                    <input type="file" name="capa" id="capa"><br><br>
-                    <label>arquivo</label>
-                    <input type="file" name="arquivo" id="arquivo"><br><br>
-                    <button type="submit">CADASTRAR</button>
+                  <form method="post">
+                    <label>Filme</label>
+                    <input type="file" name="filme" id="filme" value="{{ request.form['filme'] }}">
+                    <button role="button" class="botao" type="submit">CADASTRAR</button>
                   </form>
               </div>
           </div>
