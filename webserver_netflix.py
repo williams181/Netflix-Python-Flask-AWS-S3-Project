@@ -1,10 +1,15 @@
 from flask import Flask, render_template, url_for, flash, request, redirect, send_file
-from src.s3.indiano_donwload_file import download_file
-from src.s3.indiano_upload_file import upload_file
-from src.s3.indiano_list_file import list_files
-from src.model.document import Documento, Filme
-import json
+#from indiano_donwload_file import download_file
+#from indiano_upload_file import upload_file
+#from indiano_list_file import list_files
+#from src.model.document import Documento, Filme
+#import json
 import os
+import boto3
+
+def upload_file2(file, file_name):
+    s3 = boto3.client('s3')
+    s3.upload_file(file,'netflix-clone-josino', file_name)
 
 
 app = Flask(__name__, static_url_path='/static')
