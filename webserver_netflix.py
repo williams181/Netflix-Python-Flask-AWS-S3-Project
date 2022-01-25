@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, url_for, flash, redirect
-from src.s3.indiano_upload_file import upload_file2
+from flask import Flask, render_template, url_for, flash, request, redirect, send_file
+from src.s3.indiano_donwload_file import download_file
+from src.s3.indiano_upload_file import upload_file
+from src.s3.indiano_list_file import list_files
 from src.model.document import Documento, Filme
-import os
 import json
-
+import os
 
 
 app = Flask(__name__, static_url_path='/static')
@@ -17,11 +18,8 @@ print(database_path)
 
 PATH_TEMP_FILES = os.path.join(pathname, 'temp')
 
-messages = [{'title': 'Message One',
-             'content': 'Message One Content'},
-            {'title': 'Message Two',
-             'content': 'Message Two Content'}
-            ]
+messages = [{'title': 'NETFLIX',
+             'content': 'BEM VINDO!!!'}]
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
@@ -40,13 +38,13 @@ def cadastrar():
     if request.method == 'POST':
         filme = request.form['filme']
         arquivo = os.path.join(PATH_TEMP_FILES, filme)
-        salvar = upload_file2(arquivo, file_name=filme)
+        salvar = upload_file(arquivo, file_name=filme)
         print(salvar)
-        # if not filme:
-        #     flash('Title is required!')
-        # else:
-        #     messages.append({'filme': filme})
-        #     return redirect(url_for('index'))
+        if not filme:
+            flash('Um Filme e Necessario!!!')
+        else:
+            messages.append({'filme': filme})
+            return redirect(url_for('index'))
 
     return render_template('cadastrarFilmes.html', messages=messages)
 
