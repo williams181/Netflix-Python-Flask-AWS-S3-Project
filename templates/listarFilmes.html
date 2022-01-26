@@ -40,13 +40,13 @@
         </div>
     </main>
 
-        <div class="carrosel-filmes">
+        <!-- <div class="carrosel-filmes">
             <div class="owl-carousel owl-theme">
                 {% for item in contents %}
                 <div class="item">
                     <video width="320" height="240" controls>
 
-                        <source class="box-filme" href="/assistir/{{ item.Key }}"> {{ item.Key }}
+                        <source class="box-filme" src={{ item }} type="video/mp4">
 
                     </video>
                 </div>
@@ -54,7 +54,13 @@
 
             </div>
 
-        </div>
+        </div> -->
+
+        {% for item in contents %}
+        <li>
+            <a href="/assistir/{{ item.Key }}"> {{ item.Key }} </a>
+        </li>
+        {% endfor %}
 
         <script href="{{ url_for('static', filename='https://kit.fontawesome.com/788a98004a.js')}}" crossorigin="anonymous"></script>
         <script href="{{ url_for('static', filename='static/js/owl/jquery.min.js')}}"></script>

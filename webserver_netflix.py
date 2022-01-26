@@ -1,10 +1,22 @@
-from flask import Flask, render_template, url_for, flash, request, redirect, send_file
+from flask import Flask, render_template, url_for, flash, request, redirect, send_file, jsonify, request, Response, stream_with_context
 from src.s3.indiano_donwload_file import download_file
 from src.s3.indiano_upload_file import upload_file
 from src.s3.indiano_list_file import list_files
+from src.s3.new_upload_file import show_image
 from src.model.document import Documento, Filme
 import json
 import os
+from werkzeug.datastructures import Headers
+import uuid
+import boto3
+import os
+import requests
+import uuid
+import boto3
+from flask import Flask, jsonify, request, Response, stream_with_context
+from werkzeug.datastructures import Headers
+import json
+import re
 
 app = Flask(__name__, static_url_path='/static')
 app.config['SECRET_KEY'] = '1234567890'
@@ -46,7 +58,7 @@ def cadastrar():
     return render_template('cadastrarFilmes.html', messages=messages)
 
 # donwload de arquivos
-@app.route('/baixar/<filename>', methods=('GET', 'POST'))
+@app.route('/baixar', methods=('GET', 'POST'))
 def baixar():
     if request.method == 'GET':
         filme = request.method['GET']
@@ -64,7 +76,14 @@ def listar():
 
 @app.route('/assistir', methods=('GET', 'POST'))
 def assistir():
-    return render_template('assistirFilmes.html', messages=messages)
+    contents = show_image(BUCKET)
+    return render_template('assistirFilmes.html', contents=contents)
+
+
+@app.route('/<key>', methods=['GET'])
+def get_specific_media(key):
+
+    return render_template()
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=8080)

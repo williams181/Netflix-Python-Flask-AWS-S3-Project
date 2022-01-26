@@ -39,6 +39,30 @@
                 </div>
             </div>
         </main>
+        
+
+        <div class="carrosel-filmes">
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    {% for item in contents %}
+                        <video width="320" height="240" controls>
+                            <source class="box-filme" src={{ item }} type="video/mp4">
+                        </video>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        {% for item in contents %}
+        <li>
+          <img src={{ item }} style="width: 250px">
+        </li>
+        <li>
+            <video width="320" height="240" controls>
+                <source class="box-filme" src={{ item }} type="video/mp4">
+            </video>
+        </li>
+      {% endfor %}
 
         <script src="https://kit.fontawesome.com/788a98004a.js" crossorigin="anonymous"></script>
         <script src="js/owl/jquery.min.js"></script>
