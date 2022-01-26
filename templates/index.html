@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" media="all" href="{{ url_for('static', filename='style/main.css')}}">
+    <link rel="stylesheet" media="all" href="{{ url_for('static', filename='style/responsive.css')}}">
+    <link rel="stylesheet" media="all" href="{{ url_for('static', filename='style/owl/owl.carousel.min.css')}}">
+    <link rel="stylesheet" media="all" href="{{ url_for('static', filename='style/owl/owl.theme.default.min.css')}}">
+
+    <title>NETFLIX</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h2 class="logo">NETFLIX</h2>
+            <nav>
+                <a href="{{ url_for('index') }}">Inicio</a>
+                <a href="{{ url_for('listar') }}">Filmes</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="filme-principal">
+            <div class="container">
+                <h3 class="titulo">TÓPICOS AVANÇADOS DE REDES</h3>
+                <p class="descricao">CADASTRO DE FILMES!!!</p>
+                <div class="botoes">
+                  <button role="button" class="botao">
+                      <a class="fas fa-play" href="{{ url_for('listar') }}">ASSISTIR AGORA</a>
+                  </button>
+                  <button role="button" class="botao">
+                      <a class="fas fa-info-circle" href="{{ url_for('cadastrar') }}">CADASTRAR AORA</a>
+                  </button>
+                   
+                </div>
+            </div>
+        </div>
+      </main>
+
+        <script src="https://kit.fontawesome.com/788a98004a.js" crossorigin="anonymous"></script>
+        <script src="js/owl/jquery.min.js"></script>
+        <script src="js/owl/owl.carousel.min.js"></script>
+        <script src="js/owl/setup.js"></script>
+        
+</body>
+</html>
