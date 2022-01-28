@@ -18,7 +18,7 @@
             <h2 class="logo">NETFLIX</h2>
             <nav>
                 <a href="{{ url_for('index') }}">Inicio</a>
-                <a href="{{ url_for('listar') }}">Filmes</a>
+                <a href="{{ url_for('assistir') }}">Filmes</a>
             </nav>
         </div>
     </header>
@@ -27,24 +27,23 @@
         <div class="filme-principal">
             <div class="container">
                 <h3 class="titulo">TÓPICOS AVANÇADOS DE REDES</h3>
-                <p class="descricao">CADASTRO DE FILMES!!!</p>
+                <p class="descricao">Em uma terra onde os verões podem durar vários anos e o inverno toda uma vida, sete nobres famílias lutam pelo controle da mítica terra de Westeros, dividida depois de uma guerra. Num cenário que lembra a Europa medieval, reis, rainhas, cavaleiros e renegados usam todos os meios possíveis em um jogo político pela disputa do Trono de Ferro, o símbolo do poder absoluto.</p>
                 <div class="botoes">
                   <button role="button" class="botao">
-                      <a class="fas fa-play" href="{{ url_for('listar') }}">ASSISTIR AGORA</a>
+                      <a class="linkVoltar" href="{{ url_for('assistir') }}">ASSISTIR AGORA</a>
                   </button>
                   <button role="button" class="botao">
-                      <a class="fas fa-info-circle" href="{{ url_for('cadastrar') }}">CADASTRAR AORA</a>
+                      <a class="linkVoltar" href="{{ url_for('cadastrar') }}">CADASTRAR FILME</a>
                   </button>
-                   
                 </div>
             </div>
         </div>
-      </main>
+    </main>
 
-        <script src="https://kit.fontawesome.com/788a98004a.js" crossorigin="anonymous"></script>
-        <script src="js/owl/jquery.min.js"></script>
-        <script src="js/owl/owl.carousel.min.js"></script>
-        <script src="js/owl/setup.js"></script>
+      <script href="{{ url_for('static', filename='https://kit.fontawesome.com/788a98004a.js')}}" crossorigin="anonymous"></script>
+      <script href="{{ url_for('static', filename='static/js/owl/jquery.min.js')}}"></script>
+      <script href="{{ url_for('static', filename='static/js/owl/owl.carousel.min.js')}}"></script>
+      <script href="{{ url_for('static', filename='static/js/owl/setup.js')}}"></script>
         
 </body>
 </html>

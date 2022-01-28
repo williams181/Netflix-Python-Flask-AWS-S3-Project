@@ -5,20 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script rel="script" media="all" href="https://kit.fontawesome.com/788a98004a.js" crossorigin="anonymous"></script>
+    <script rel="script" media="all" href="{{ url_for('static', filename='static/js/owl/jquery.min.js')}}"></script>
+    <script rel="script" media="all" href="{{ url_for('static', filename='static/js/owl/owl.carousel.min.js')}}"></script>
+    <script rel="script" media="all" href="{{ url_for('static', filename='static/js/owl/setup.js')}}"></script>
+
     <link rel="stylesheet" media="all" href="{{ url_for('static', filename='style/main.css')}}">
     <link rel="stylesheet" media="all" href="{{ url_for('static', filename='style/responsive.css')}}">
     <link rel="stylesheet" media="all" href="{{ url_for('static', filename='style/owl/owl.carousel.min.css')}}">
     <link rel="stylesheet" media="all" href="{{ url_for('static', filename='style/owl/owl.theme.default.min.css')}}">
 
     <title>NETFLIX</title>
+
 </head>
 <body>
+
     <header>
         <div class="container">
             <h2 class="logo">NETFLIX</h2>
             <nav>
                 <a href="{{ url_for('index') }}">Inicio</a>
-                <a href="{{ url_for('listar') }}">Filmes</a>
+                <a href="{{ url_for('assistir') }}">Filmes</a>
             </nav>
         </div>
     </header>
@@ -27,46 +34,43 @@
             <div class="filme-principal">
                 <div class="container">
                     <h3 class="titulo">TÓPICOS AVANÇADOS DE REDES</h3>
-                    <p class="descricao">ASSISTIR FILMES!!!</p>
+                    <p class="descricao">Em uma terra onde os verões podem durar vários anos e o inverno toda uma vida, sete nobres famílias lutam pelo controle da mítica terra de Westeros, dividida depois de uma guerra. Num cenário que lembra a Europa medieval, reis, rainhas, cavaleiros e renegados usam todos os meios possíveis em um jogo político pela disputa do Trono de Ferro, o símbolo do poder absoluto.</p>
                     <div class="botoes">
                         <button role="button" class="botao">
-                            <a class="fas fa-play" href="{{ url_for('listar') }}">ASSISTIR AGORA</a>
+                            <a class="linkVoltar"  href="{{ url_for('assistir') }}">ASSISTIR AGORA</a>
                         </button>
                         <button role="button" class="botao">
-                            <a class="fas fa-info-circle" href="{{ url_for('cadastrar') }}">CADASTRAR AORA</a>
+                            <a class="linkVoltar" href="{{ url_for('cadastrar') }}">CADASTRAR FILME</a>
                         </button>
                     </div>
                 </div>
             </div>
         </main>
         
-
-        <div class="carrosel-filmes">
+        <!-- <div class="carrosel-filmes">
             <div class="owl-carousel owl-theme">
                 <div class="item">
                     {% for item in contents %}
-                        <video width="320" height="240" controls>
-                            <source class="box-filme" src={{ item }} type="video/mp4">
-                        </video>
+                    <video class="box-filme" width="320" height="240" controls> 
+                        <source src={{ item }} type="video/mp4">
+                    </video>
                     {% endfor %}
                 </div>
             </div>
-        </div>
+        </div> -->
 
         {% for item in contents %}
-        <li>
-          <img src={{ item }} style="width: 250px">
-        </li>
-        <li>
-            <video width="320" height="240" controls>
-                <source class="box-filme" src={{ item }} type="video/mp4">
+        <div class="item">
+            <video class="box-filme" width="320" height="240" controls>
+                <source  src={{ item }} type="video/mp4">
             </video>
-        </li>
-      {% endfor %}
+        </div>
+        {% endfor %}
 
-        <script src="https://kit.fontawesome.com/788a98004a.js" crossorigin="anonymous"></script>
-        <script src="js/owl/jquery.min.js"></script>
-        <script src="js/owl/owl.carousel.min.js"></script>
-        <script src="js/owl/setup.js"></script>
+      <script rel="script" media="all" href="https://kit.fontawesome.com/788a98004a.js" crossorigin="anonymous"></script>
+      <script rel="script" media="all" href="{{ url_for('static', filename='static/js/owl/jquery.min.js')}}"></script>
+      <script rel="script" media="all" href="{{ url_for('static', filename='static/js/owl/owl.carousel.min.js')}}"></script>
+      <script rel="script" media="all" href="{{ url_for('static', filename='static/js/owl/setup.js')}}"></script>
+
 </body>
 </html>

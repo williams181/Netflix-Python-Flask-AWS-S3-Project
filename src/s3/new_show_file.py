@@ -1,31 +1,17 @@
-# import os
-# import requests
-# import uuid
-# import boto3
-# from flask import Flask, jsonify, request, Response, stream_with_context
-# from werkzeug.datastructures import Headers
-# import json
-# import re
+import boto3
+from werkzeug.datastructures import Headers
+from flask import Flask, request, stream_with_context
 
-# BUCKET = "netflix-clone-josino"
+BUCKET = "netflix-clone-josino"
 
-# def show_file():
-#     storage = boto3.client('s3')
-#     media_stream = storage.get_object(Bucket=BUCKET, Key=key)
-#     full_content = media_stream['ContentLength']
-#     headers = Headers()
-#     status = 200
-#     range_header = request.headers.get('Range', None)
-#     if range_header:
-#         byte_start, byte_end, length = get_byte_range(range_header)
-
-#     headers.add('Content-Type', content_type)
-#     headers.add('Content-Length', media_stream['ContentLength'])
-#     response = Response(
-#         stream_with_context(media_stream['Body'].iter_chunks()),
-#         mimetype=content_type,
-#         content_type=content_type,
-#         headers=headers,
-#         status=status
-#         )
-#     return response
+def show_image2(BUCKET):
+    s3_client = boto3.client('s3')
+    public_urls = []
+    try:
+        for item in s3_client.list_objects(BUCKET=BUCKET)['Contents']:
+            presigned_url = s3_client.generate_presigned_url('get_object', Params = {'Bucket': BUCKET, 'Key': item['Key']}, ExpiresIn = 100)
+            public_urls.append(presigned_url)
+    except Exception as e:
+        pass
+    print("[INFO] : The contents inside show_image = ", public_urls)
+    return public_urls
